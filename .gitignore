@@ -1,0 +1,14 @@
+.env
+.venv/
+.kaggle/
+__pycache__/
+*.pyc
+.DS_Store
+data/spotify_lookup.csv
+data/raw/solomon/
+data/raw/warda/
+data/raw/*.csv
+data/merged_music_dataset.csv
+data/browser_songs.json
+data/merged_music_dataset_mock.csv
+my_football_team copy/

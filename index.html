@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Who Are You Based on Your Music?</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient-stage" aria-hidden="true">
+      <div class="wave wave-one"></div>
+      <div class="wave wave-two"></div>
+      <div class="wave wave-three"></div>
+      <div class="scanline"></div>
+    </div>
+    <div class="note-stream" aria-hidden="true">
+      <span style="--delay: -34s; --top: 18px; --size: 1.45rem;">♪</span>
+      <span style="--delay: -32s; --top: 86px; --size: 0.92rem;">♩</span>
+      <span style="--delay: -30s; --top: 162px; --size: 1.05rem;">♫</span>
+      <span style="--delay: -28s; --top: 42px; --size: 1.16rem;">♫</span>
+      <span style="--delay: -26s; --top: 216px; --size: 0.96rem;">♬</span>
+      <span style="--delay: -24s; --top: 66px; --size: 1.05rem;">♬</span>
+      <span style="--delay: -22s; --top: 292px; --size: 1.2rem;">♪</span>
+      <span style="--delay: -20s; --top: 28px; --size: 1.36rem;">♪</span>
+      <span style="--delay: -18s; --top: 118px; --size: 1rem;">♭</span>
+      <span style="--delay: -16s; --top: 250px; --size: 1.28rem;">♬</span>
+      <span style="--delay: -14s; --top: 52px; --size: 1.28rem;">♬</span>
+      <span style="--delay: -12s; --top: 184px; --size: 0.95rem;">♩</span>
+      <span style="--delay: -10s; --top: 338px; --size: 1.1rem;">♫</span>
+      <span style="--delay: -8s; --top: 76px; --size: 1.18rem;">♪</span>
+      <span style="--delay: -6s; --top: 142px; --size: 1.34rem;">♫</span>
+      <span style="--delay: -4s; --top: 312px; --size: 0.88rem;">♬</span>
+      <span style="--delay: -2s; --top: 96px; --size: 0.88rem;">♬</span>
+      <span style="--delay: 0s; --top: 228px; --size: 1.12rem;">♪</span>
+      <span style="--delay: 2s; --top: 58px; --size: 1.12rem;">♪</span>
+      <span style="--delay: 4s; --top: 276px; --size: 1.02rem;">♯</span>
+      <span style="--delay: 6s; --top: 26px; --size: 1.02rem;">♯</span>
+      <span style="--delay: 8s; --top: 204px; --size: 1.42rem;">♫</span>
+      <span style="--delay: 10s; --top: 84px; --size: 1.42rem;">♫</span>
+      <span style="--delay: 12s; --top: 356px; --size: 0.96rem;">♩</span>
+      <span style="--delay: 14s; --top: 46px; --size: 0.96rem;">♩</span>
+      <span style="--delay: 16s; --top: 132px; --size: 1.22rem;">♪</span>
+      <span style="--delay: 18s; --top: 324px; --size: 1.32rem;">♬</span>
+      <span style="--delay: 20s; --top: 238px; --size: 0.9rem;">♭</span>
+      <span style="--delay: 22s; --top: 106px; --size: 1.04rem;">♪</span>
+      <span style="--delay: 24s; --top: 176px; --size: 1.18rem;">♫</span>
+      <span style="--delay: 26s; --top: 384px; --size: 1rem;">♩</span>
+      <span style="--delay: 28s; --top: 266px; --size: 1.36rem;">♪</span>
+      <span style="--delay: 30s; --top: 146px; --size: 0.94rem;">♬</span>
+    </div>
+    <main class="app-shell">
+      <section class="intro">
+        <div>
+          <p id="eyebrowText" class="eyebrow">Embedding-based listener archetype inference</p>
+          <h1 id="titleText">Who Are You Based on Your Music?</h1>
+          <p id="summaryText" class="summary">
+            Add songs one by one and watch your latent music identity evolve.
+          </p>
+        </div>
+        <div class="intro-actions">
+          <div class="language-toggle" aria-label="Language">
+            <button class="lang-button active" type="button" data-lang="en">EN</button>
+            <button class="lang-button" type="button" data-lang="es">ES</button>
+          </div>
+          <div class="model-status">
+            <span class="pulse"></span>
+            <span id="statusText">Live listener vector</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="panel input-panel">
+          <div class="panel-heading">
+            <h2 id="addSongsTitle">Add Songs</h2>
+            <button id="resetButton" class="icon-button" title="Reset profile" aria-label="Reset profile">
+              ↺
+            </button>
+          </div>
+
+          <label class="search-box">
+            <span id="songInputLabel">Song title or artist</span>
+            <input id="songInput" list="songOptions" autocomplete="off" placeholder="Try After Dark, 505, Resonance..." />
+          </label>
+          <datalist id="songOptions"></datalist>
+
+          <button id="addButton" class="primary-button">Add Song</button>
+
+          <div class="quick-add">
+            <p id="quickAddLabel">Quick add</p>
+            <div id="quickSongs" class="quick-grid"></div>
+          </div>
+
+          <div class="taste-quiz">
+            <div class="section-heading">
+              <h3 id="tasteCalibrationTitle">Taste calibration</h3>
+              <span id="quizProgress">0/5</span>
+            </div>
+            <div id="quizQuestions" class="quiz-stack"></div>
+          </div>
+
+          <div class="playlist">
+            <h3 id="currentSongsTitle">Current songs</h3>
+            <ol id="selectedSongs" class="song-list"></ol>
+          </div>
+        </aside>
+
+        <section class="panel result-panel">
+          <div class="archetype-block">
+            <p id="primaryLabel" class="label">Primary archetype</p>
+            <h2 id="primaryArchetype">Add a song to begin</h2>
+            <p id="primaryDescription" class="description">
+              Your profile will emerge from the accumulated song embeddings.
+            </p>
+          </div>
+
+          <div class="secondary-grid">
+            <div>
+              <p id="secondaryLabel" class="label">Secondary</p>
+              <strong id="secondaryArchetype">Waiting for signal</strong>
+            </div>
+            <div>
+              <p id="confidenceLabel" class="label">Confidence</p>
+              <strong id="confidenceValue">0%</strong>
+            </div>
+          </div>
+
+          <div class="top-match-section">
+            <p id="topMatchesLabel" class="label">Top matches</p>
+            <div id="topMatches" class="top-matches"></div>
+          </div>
+
+          <div class="trait-section">
+            <p id="traitsLabel" class="label">Detected characteristics</p>
+            <div id="traits" class="traits"></div>
+          </div>
+
+          <div class="vector-bars">
+            <div class="bar-row">
+              <span id="energyLabel">Energy</span>
+              <meter id="energyMeter" min="0" max="1" value="0"></meter>
+            </div>
+            <div class="bar-row">
+              <span id="melancholyLabel">Melancholy</span>
+              <meter id="melancholyMeter" min="0" max="1" value="0"></meter>
+            </div>
+            <div class="bar-row">
+              <span id="nostalgiaLabel">Nostalgia</span>
+              <meter id="nostalgiaMeter" min="0" max="1" value="0"></meter>
+            </div>
+            <div class="bar-row">
+              <span id="electronicLabel">Electronic</span>
+              <meter id="electronicMeter" min="0" max="1" value="0"></meter>
+            </div>
+            <div class="bar-row">
+              <span id="introspectionLabel">Introspection</span>
+              <meter id="introspectionMeter" min="0" max="1" value="0"></meter>
+            </div>
+            <div class="bar-row">
+              <span id="warmthLabel">Warmth</span>
+              <meter id="warmthMeter" min="0" max="1" value="0"></meter>
+            </div>
+            <div class="bar-row">
+              <span id="cinematicLabel">Cinematic</span>
+              <meter id="cinematicMeter" min="0" max="1" value="0"></meter>
+            </div>
+            <div class="bar-row">
+              <span id="rebellionLabel">Rebellion</span>
+              <meter id="rebellionMeter" min="0" max="1" value="0"></meter>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel map-panel">
+          <div class="panel-heading">
+            <h2 id="identitySpaceTitle">Identity Space</h2>
+            <span id="songCount" class="counter">0 signals</span>
+          </div>
+
+          <div class="map" id="identityMap">
+            <span id="axisLeft" class="axis-label left">organic / indie</span>
+            <span id="axisRight" class="axis-label right">digital / electronic</span>
+            <span id="axisTop" class="axis-label top">high intensity</span>
+            <span id="axisBottom" class="axis-label bottom">soft nostalgia</span>
+            <div id="profilePoint" class="profile-point"></div>
+          </div>
+
+          <div class="drift-log">
+            <h3 id="driftLogTitle">Music personality evolution</h3>
+            <ul id="driftLog"></ul>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="data/browser_songs.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

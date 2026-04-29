@@ -1,0 +1,6 @@
+classifier,accuracy,macro_f1,weighted_f1
+logistic_regression,0.9215,0.8922,0.9257
+linear_svc,0.9246,0.8928,0.9264
+ridge_classifier,0.92,0.8904,0.9236
+knn,0.9077,0.879,0.9074
+random_forest,0.9185,0.8878,0.9172

@@ -1,0 +1,576 @@
+{
+  "dataset": "data/training_dataset.csv",
+  "rows": 3250,
+  "label_distribution": {
+    "ambient ritualist": 300,
+    "beautifully detached romantic": 300,
+    "brooding alt antihero": 67,
+    "cinematic self-mythologizer": 28,
+    "classic soul romantic": 300,
+    "euphoric transformation seeker": 79,
+    "gaming adrenaline pilot": 198,
+    "global rhythm collector": 300,
+    "heavy catharsis seeker": 296,
+    "hip-hop confidence architect": 300,
+    "lofi focus drifter": 292,
+    "melancholic indie nostalgia": 126,
+    "night-drive existentialist": 115,
+    "nostalgic digital dreamer": 249,
+    "retro neon escapist": 300
+  },
+  "embedding_method": "TF-IDF followed by TruncatedSVD dense latent semantic embeddings",
+  "embedding_dimensions": 128,
+  "best_classifier": "linear_svc",
+  "results": {
+    "logistic_regression": {
+      "accuracy": 0.9215384615384615,
+      "macro_f1": 0.8922472331260859,
+      "weighted_f1": 0.9257167519490566,
+      "report": {
+        "ambient ritualist": {
+          "precision": 0.9836065573770492,
+          "recall": 1.0,
+          "f1-score": 0.9917355371900827,
+          "support": 60.0
+        },
+        "beautifully detached romantic": {
+          "precision": 0.8833333333333333,
+          "recall": 0.8833333333333333,
+          "f1-score": 0.8833333333333333,
+          "support": 60.0
+        },
+        "brooding alt antihero": {
+          "precision": 1.0,
+          "recall": 0.8461538461538461,
+          "f1-score": 0.9166666666666666,
+          "support": 13.0
+        },
+        "cinematic self-mythologizer": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.9090909090909091,
+          "support": 6.0
+        },
+        "classic soul romantic": {
+          "precision": 1.0,
+          "recall": 0.9666666666666667,
+          "f1-score": 0.9830508474576272,
+          "support": 60.0
+        },
+        "euphoric transformation seeker": {
+          "precision": 0.34615384615384615,
+          "recall": 0.5625,
+          "f1-score": 0.42857142857142855,
+          "support": 16.0
+        },
+        "gaming adrenaline pilot": {
+          "precision": 0.9047619047619048,
+          "recall": 0.95,
+          "f1-score": 0.926829268292683,
+          "support": 40.0
+        },
+        "global rhythm collector": {
+          "precision": 1.0,
+          "recall": 0.9666666666666667,
+          "f1-score": 0.9830508474576272,
+          "support": 60.0
+        },
+        "heavy catharsis seeker": {
+          "precision": 0.9074074074074074,
+          "recall": 0.8305084745762712,
+          "f1-score": 0.8672566371681416,
+          "support": 59.0
+        },
+        "hip-hop confidence architect": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "lofi focus drifter": {
+          "precision": 1.0,
+          "recall": 0.9655172413793104,
+          "f1-score": 0.9824561403508771,
+          "support": 58.0
+        },
+        "melancholic indie nostalgia": {
+          "precision": 0.7931034482758621,
+          "recall": 0.92,
+          "f1-score": 0.8518518518518519,
+          "support": 25.0
+        },
+        "night-drive existentialist": {
+          "precision": 0.76,
+          "recall": 0.8260869565217391,
+          "f1-score": 0.7916666666666666,
+          "support": 23.0
+        },
+        "nostalgic digital dreamer": {
+          "precision": 0.98,
+          "recall": 0.98,
+          "f1-score": 0.98,
+          "support": 50.0
+        },
+        "retro neon escapist": {
+          "precision": 0.9285714285714286,
+          "recall": 0.8666666666666667,
+          "f1-score": 0.896551724137931,
+          "support": 60.0
+        },
+        "accuracy": 0.9215384615384615,
+        "macro avg": {
+          "precision": 0.899129195058722,
+          "recall": 0.8920511012420778,
+          "f1-score": 0.8922472331260859,
+          "support": 650.0
+        },
+        "weighted avg": {
+          "precision": 0.9327757540458153,
+          "recall": 0.9215384615384615,
+          "f1-score": 0.9257167519490566,
+          "support": 650.0
+        }
+      }
+    },
+    "linear_svc": {
+      "accuracy": 0.9246153846153846,
+      "macro_f1": 0.8927516838991182,
+      "weighted_f1": 0.926448720702041,
+      "report": {
+        "ambient ritualist": {
+          "precision": 0.9836065573770492,
+          "recall": 1.0,
+          "f1-score": 0.9917355371900827,
+          "support": 60.0
+        },
+        "beautifully detached romantic": {
+          "precision": 0.873015873015873,
+          "recall": 0.9166666666666666,
+          "f1-score": 0.8943089430894309,
+          "support": 60.0
+        },
+        "brooding alt antihero": {
+          "precision": 1.0,
+          "recall": 0.8461538461538461,
+          "f1-score": 0.9166666666666666,
+          "support": 13.0
+        },
+        "cinematic self-mythologizer": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.9090909090909091,
+          "support": 6.0
+        },
+        "classic soul romantic": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "euphoric transformation seeker": {
+          "precision": 0.35,
+          "recall": 0.4375,
+          "f1-score": 0.3888888888888889,
+          "support": 16.0
+        },
+        "gaming adrenaline pilot": {
+          "precision": 0.8837209302325582,
+          "recall": 0.95,
+          "f1-score": 0.9156626506024096,
+          "support": 40.0
+        },
+        "global rhythm collector": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "heavy catharsis seeker": {
+          "precision": 0.8771929824561403,
+          "recall": 0.847457627118644,
+          "f1-score": 0.8620689655172413,
+          "support": 59.0
+        },
+        "hip-hop confidence architect": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "lofi focus drifter": {
+          "precision": 1.0,
+          "recall": 0.9655172413793104,
+          "f1-score": 0.9824561403508771,
+          "support": 58.0
+        },
+        "melancholic indie nostalgia": {
+          "precision": 0.7931034482758621,
+          "recall": 0.92,
+          "f1-score": 0.8518518518518519,
+          "support": 25.0
+        },
+        "night-drive existentialist": {
+          "precision": 0.8636363636363636,
+          "recall": 0.8260869565217391,
+          "f1-score": 0.8444444444444444,
+          "support": 23.0
+        },
+        "nostalgic digital dreamer": {
+          "precision": 0.98,
+          "recall": 0.98,
+          "f1-score": 0.98,
+          "support": 50.0
+        },
+        "retro neon escapist": {
+          "precision": 0.9107142857142857,
+          "recall": 0.85,
+          "f1-score": 0.8793103448275862,
+          "support": 60.0
+        },
+        "accuracy": 0.9246153846153846,
+        "macro avg": {
+          "precision": 0.9009993627138756,
+          "recall": 0.8881810447449024,
+          "f1-score": 0.8927516838991182,
+          "support": 650.0
+        },
+        "weighted avg": {
+          "precision": 0.9298994595556616,
+          "recall": 0.9246153846153846,
+          "f1-score": 0.926448720702041,
+          "support": 650.0
+        }
+      }
+    },
+    "ridge_classifier": {
+      "accuracy": 0.92,
+      "macro_f1": 0.8904374835513403,
+      "weighted_f1": 0.923593878381973,
+      "report": {
+        "ambient ritualist": {
+          "precision": 0.967741935483871,
+          "recall": 1.0,
+          "f1-score": 0.9836065573770492,
+          "support": 60.0
+        },
+        "beautifully detached romantic": {
+          "precision": 0.8983050847457628,
+          "recall": 0.8833333333333333,
+          "f1-score": 0.8907563025210085,
+          "support": 60.0
+        },
+        "brooding alt antihero": {
+          "precision": 0.9166666666666666,
+          "recall": 0.8461538461538461,
+          "f1-score": 0.88,
+          "support": 13.0
+        },
+        "cinematic self-mythologizer": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.9090909090909091,
+          "support": 6.0
+        },
+        "classic soul romantic": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "euphoric transformation seeker": {
+          "precision": 0.34615384615384615,
+          "recall": 0.5625,
+          "f1-score": 0.42857142857142855,
+          "support": 16.0
+        },
+        "gaming adrenaline pilot": {
+          "precision": 0.926829268292683,
+          "recall": 0.95,
+          "f1-score": 0.9382716049382716,
+          "support": 40.0
+        },
+        "global rhythm collector": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "heavy catharsis seeker": {
+          "precision": 0.8867924528301887,
+          "recall": 0.7966101694915254,
+          "f1-score": 0.8392857142857143,
+          "support": 59.0
+        },
+        "hip-hop confidence architect": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "lofi focus drifter": {
+          "precision": 1.0,
+          "recall": 0.9655172413793104,
+          "f1-score": 0.9824561403508771,
+          "support": 58.0
+        },
+        "melancholic indie nostalgia": {
+          "precision": 0.7931034482758621,
+          "recall": 0.92,
+          "f1-score": 0.8518518518518519,
+          "support": 25.0
+        },
+        "night-drive existentialist": {
+          "precision": 0.8260869565217391,
+          "recall": 0.8260869565217391,
+          "f1-score": 0.8260869565217391,
+          "support": 23.0
+        },
+        "nostalgic digital dreamer": {
+          "precision": 0.98,
+          "recall": 0.98,
+          "f1-score": 0.98,
+          "support": 50.0
+        },
+        "retro neon escapist": {
+          "precision": 0.8947368421052632,
+          "recall": 0.85,
+          "f1-score": 0.8717948717948718,
+          "support": 60.0
+        },
+        "accuracy": 0.92,
+        "macro avg": {
+          "precision": 0.8957611000717255,
+          "recall": 0.8909023253475391,
+          "f1-score": 0.8904374835513403,
+          "support": 650.0
+        },
+        "weighted avg": {
+          "precision": 0.9297287255397032,
+          "recall": 0.92,
+          "f1-score": 0.923593878381973,
+          "support": 650.0
+        }
+      }
+    },
+    "knn": {
+      "accuracy": 0.9076923076923077,
+      "macro_f1": 0.8790302714087715,
+      "weighted_f1": 0.9073747756437921,
+      "report": {
+        "ambient ritualist": {
+          "precision": 0.9836065573770492,
+          "recall": 1.0,
+          "f1-score": 0.9917355371900827,
+          "support": 60.0
+        },
+        "beautifully detached romantic": {
+          "precision": 0.6708860759493671,
+          "recall": 0.8833333333333333,
+          "f1-score": 0.762589928057554,
+          "support": 60.0
+        },
+        "brooding alt antihero": {
+          "precision": 1.0,
+          "recall": 0.8461538461538461,
+          "f1-score": 0.9166666666666666,
+          "support": 13.0
+        },
+        "cinematic self-mythologizer": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.9090909090909091,
+          "support": 6.0
+        },
+        "classic soul romantic": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "euphoric transformation seeker": {
+          "precision": 0.45454545454545453,
+          "recall": 0.3125,
+          "f1-score": 0.37037037037037035,
+          "support": 16.0
+        },
+        "gaming adrenaline pilot": {
+          "precision": 0.925,
+          "recall": 0.925,
+          "f1-score": 0.925,
+          "support": 40.0
+        },
+        "global rhythm collector": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "heavy catharsis seeker": {
+          "precision": 0.8846153846153846,
+          "recall": 0.7796610169491526,
+          "f1-score": 0.8288288288288288,
+          "support": 59.0
+        },
+        "hip-hop confidence architect": {
+          "precision": 0.9672131147540983,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9752066115702479,
+          "support": 60.0
+        },
+        "lofi focus drifter": {
+          "precision": 1.0,
+          "recall": 0.9655172413793104,
+          "f1-score": 0.9824561403508771,
+          "support": 58.0
+        },
+        "melancholic indie nostalgia": {
+          "precision": 0.7931034482758621,
+          "recall": 0.92,
+          "f1-score": 0.8518518518518519,
+          "support": 25.0
+        },
+        "night-drive existentialist": {
+          "precision": 0.9047619047619048,
+          "recall": 0.8260869565217391,
+          "f1-score": 0.8636363636363636,
+          "support": 23.0
+        },
+        "nostalgic digital dreamer": {
+          "precision": 0.98,
+          "recall": 0.98,
+          "f1-score": 0.98,
+          "support": 50.0
+        },
+        "retro neon escapist": {
+          "precision": 0.875,
+          "recall": 0.8166666666666667,
+          "f1-score": 0.8448275862068966,
+          "support": 60.0
+        },
+        "accuracy": 0.9076923076923077,
+        "macro avg": {
+          "precision": 0.8959154626852749,
+          "recall": 0.8692168262891585,
+          "f1-score": 0.8790302714087715,
+          "support": 650.0
+        },
+        "weighted avg": {
+          "precision": 0.9121607536404404,
+          "recall": 0.9076923076923077,
+          "f1-score": 0.9073747756437921,
+          "support": 650.0
+        }
+      }
+    },
+    "random_forest": {
+      "accuracy": 0.9184615384615384,
+      "macro_f1": 0.8877524380698832,
+      "weighted_f1": 0.9172302998907619,
+      "report": {
+        "ambient ritualist": {
+          "precision": 0.9836065573770492,
+          "recall": 1.0,
+          "f1-score": 0.9917355371900827,
+          "support": 60.0
+        },
+        "beautifully detached romantic": {
+          "precision": 0.8253968253968254,
+          "recall": 0.8666666666666667,
+          "f1-score": 0.8455284552845529,
+          "support": 60.0
+        },
+        "brooding alt antihero": {
+          "precision": 1.0,
+          "recall": 0.8461538461538461,
+          "f1-score": 0.9166666666666666,
+          "support": 13.0
+        },
+        "cinematic self-mythologizer": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.9090909090909091,
+          "support": 6.0
+        },
+        "classic soul romantic": {
+          "precision": 0.9516129032258065,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9672131147540983,
+          "support": 60.0
+        },
+        "euphoric transformation seeker": {
+          "precision": 0.5,
+          "recall": 0.375,
+          "f1-score": 0.42857142857142855,
+          "support": 16.0
+        },
+        "gaming adrenaline pilot": {
+          "precision": 0.8085106382978723,
+          "recall": 0.95,
+          "f1-score": 0.8735632183908046,
+          "support": 40.0
+        },
+        "global rhythm collector": {
+          "precision": 0.9836065573770492,
+          "recall": 1.0,
+          "f1-score": 0.9917355371900827,
+          "support": 60.0
+        },
+        "heavy catharsis seeker": {
+          "precision": 0.8448275862068966,
+          "recall": 0.8305084745762712,
+          "f1-score": 0.8376068376068376,
+          "support": 59.0
+        },
+        "hip-hop confidence architect": {
+          "precision": 1.0,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9915966386554622,
+          "support": 60.0
+        },
+        "lofi focus drifter": {
+          "precision": 1.0,
+          "recall": 0.9655172413793104,
+          "f1-score": 0.9824561403508771,
+          "support": 58.0
+        },
+        "melancholic indie nostalgia": {
+          "precision": 0.7931034482758621,
+          "recall": 0.92,
+          "f1-score": 0.8518518518518519,
+          "support": 25.0
+        },
+        "night-drive existentialist": {
+          "precision": 0.9047619047619048,
+          "recall": 0.8260869565217391,
+          "f1-score": 0.8636363636363636,
+          "support": 23.0
+        },
+        "nostalgic digital dreamer": {
+          "precision": 0.9607843137254902,
+          "recall": 0.98,
+          "f1-score": 0.9702970297029703,
+          "support": 50.0
+        },
+        "retro neon escapist": {
+          "precision": 0.9444444444444444,
+          "recall": 0.85,
+          "f1-score": 0.8947368421052632,
+          "support": 60.0
+        },
+        "accuracy": 0.9184615384615384,
+        "macro avg": {
+          "precision": 0.9000436786059468,
+          "recall": 0.8806622123531888,
+          "f1-score": 0.8877524380698832,
+          "support": 650.0
+        },
+        "weighted avg": {
+          "precision": 0.9187409478309032,
+          "recall": 0.9184615384615384,
+          "f1-score": 0.9172302998907619,
+          "support": 650.0
+        }
+      }
+    }
+  }
+}

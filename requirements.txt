@@ -1,0 +1,8 @@
+gradio
+fastapi
+uvicorn
+pydantic
+scikit-learn
+numpy
+scipy
+joblib
