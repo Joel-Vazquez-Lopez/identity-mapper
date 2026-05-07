@@ -12,6 +12,12 @@ Future modules are planned for:
 - **YouTubers**: creator taste and content-style identity.
 - **Stardew Valley**: character matching based on personality and play style.
 
+## Live Demo
+
+Try the app on Hugging Face:
+
+[Identity Mapper demo](https://huggingface.co/spaces/Jovaz/identity-mapper)
+
 ## What The App Does
 
 Identity Mapper turns preferences into a profile vector. Each module uses a different kind of input:
@@ -124,5 +130,15 @@ scripts/                Data processing and publishing scripts
 - Add the YouTuber identity module.
 - Add the Stardew Valley character module.
 - Improve the music recommender results.
+- Improve the vector system so early choices do not overweight the final position compared with later answers.
+- Improve the music identity model so profiles do not get stuck too easily under the same archetype label.
+- Improve the vector-space visualization and movement so profile changes feel clearer and more meaningful.
+- Add a system that exports or retrieves a CSV file with user inputs, so the data can be reviewed and used to improve future accuracy.
+- Complete missing football team badges.
 - Add more visual identity summaries.
 - Make the saved identity profile more complete.
+
+## Links
+
+- Live demo: [https://huggingface.co/spaces/Jovaz/identity-mapper](https://huggingface.co/spaces/Jovaz/identity-mapper)
+- GitHub repository: [https://github.com/Joel-Vazquez-Lopez/identity-mapper](https://github.com/Joel-Vazquez-Lopez/identity-mapper)
