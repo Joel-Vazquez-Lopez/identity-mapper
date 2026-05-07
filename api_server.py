@@ -1,6 +1,7 @@
 import pickle
 from pathlib import Path
 
+import numpy as np
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -9,7 +10,7 @@ from pydantic import BaseModel
 
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "models/archetype_classifier/tfidf_classifier.pkl"
+MODEL_PATH = BASE_DIR / "models/embedding_classifiers/best_model.pkl"
 
 
 class PredictRequest(BaseModel):
@@ -33,6 +34,17 @@ def load_model():
 
 
 MODEL = load_model()
+
+
+def predict_scores(text):
+    if hasattr(MODEL, "predict_proba"):
+        return MODEL.predict_proba([text])[0]
+
+    scores = MODEL.decision_function([text])[0]
+    scores = np.asarray(scores, dtype=float)
+    scores = scores - scores.max()
+    exp_scores = np.exp(scores)
+    return exp_scores / exp_scores.sum()
 
 
 @app.get("/health")
@@ -66,7 +78,7 @@ def predict(request: PredictRequest):
     if not text:
         return {"predictions": []}
 
-    probabilities = MODEL.predict_proba([text])[0]
+    probabilities = predict_scores(text)
     ranked = sorted(zip(MODEL.classes_, probabilities), key=lambda item: item[1], reverse=True)
     predictions = [
         {"label": str(label), "probability": float(probability)}

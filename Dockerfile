@@ -7,7 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py api_server.py index.html styles.css app.js ./
 COPY data/browser_songs.js data/browser_songs.js
-COPY models/archetype_classifier/tfidf_classifier.pkl models/archetype_classifier/tfidf_classifier.pkl
+COPY assets/badges assets/badges
+COPY models/embedding_classifiers/best_model.pkl models/embedding_classifiers/best_model.pkl
 
 EXPOSE 7860
 

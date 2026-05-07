@@ -95,11 +95,45 @@ ARCHETYPE_RULES = {
         "keywords": ["gaming", "game", "adrenaline", "boss", "battle", "speedrun", "power"],
         "genre_keywords": ["gaming", "edm", "electronic"],
     },
+    "mainstream pop shapeshifter": {
+        "keywords": ["today's top hits", "top hits", "pop", "single", "viral", "chart", "radio"],
+        "genre_keywords": ["pop", "dance pop", "electropop", "post-teen pop"],
+    },
+    "dancefloor serotonin seeker": {
+        "keywords": ["feel good", "party", "dance", "club", "festival", "edm hits", "house", "summer"],
+        "genre_keywords": ["house", "edm", "dance", "disco", "tropical house", "moombahton"],
+    },
+    "techno bunker futurist": {
+        "keywords": ["techno", "bunker", "rave", "hardstyle", "stutter house", "industrial", "warehouse"],
+        "genre_keywords": ["techno", "hardstyle", "stutter house", "electronic"],
+    },
+    "dark academia romantic": {
+        "keywords": ["dark academia", "academic", "classical", "poetry", "piano", "orchestral", "study"],
+        "genre_keywords": ["classical", "opera", "piano", "soundtrack"],
+    },
+    "country sunset storyteller": {
+        "keywords": ["country", "americana", "nashville", "folk country", "southern", "storyteller"],
+        "genre_keywords": ["country", "americana", "folk"],
+    },
+    "sad pop confessional": {
+        "keywords": ["sad", "heartbreak", "cry", "tears", "alone", "fearless", "confessional", "breakup"],
+        "genre_keywords": ["sad pop", "bedroom pop", "pop"],
+    },
 }
 
 
 def slug(value):
     return re.sub(r"\s+", " ", (value or "").strip()).lower()
+
+
+def clean_genre_text(value):
+    cleaned = str(value or "")
+    if cleaned.strip().lower() in {"", "n/a", "none", "nan", "[]"}:
+        return ""
+    cleaned = cleaned.replace("[", " ").replace("]", " ")
+    cleaned = cleaned.replace("'", " ").replace('"', " ")
+    cleaned = cleaned.replace(",", " ")
+    return re.sub(r"\s+", " ", cleaned).strip()
 
 
 def safe_float(value, default=None):
@@ -122,6 +156,7 @@ def build_embedding_text(row):
     parts = [
         row.get("track_name", ""),
         row.get("artist", ""),
+        row.get("album", ""),
         row.get("genre", ""),
         row.get("subgenre", ""),
         row.get("playlist_name", ""),
@@ -217,6 +252,31 @@ def archetype_scores(row):
             score += energy * 1.2
             score += danceability * 0.8
             score += max(0, 0.8 - acousticness) * 0.4
+        elif archetype == "mainstream pop shapeshifter":
+            score += valence * 0.7
+            score += danceability * 0.7
+            score += max(0, 0.85 - acousticness) * 0.4
+        elif archetype == "dancefloor serotonin seeker":
+            score += danceability * 1.6
+            score += energy * 1.1
+            score += valence * 1.0
+        elif archetype == "techno bunker futurist":
+            score += energy * 1.2
+            score += danceability * 1.0
+            score += max(0, 0.8 - acousticness) * 0.6
+            score += instrumentalness * 0.4
+        elif archetype == "dark academia romantic":
+            score += acousticness * 0.8
+            score += max(0, 0.6 - valence) * 0.7
+            score += max(0, 0.65 - danceability) * 0.4
+        elif archetype == "country sunset storyteller":
+            score += acousticness * 0.7
+            score += valence * 0.4
+            score += max(0, 0.75 - energy) * 0.3
+        elif archetype == "sad pop confessional":
+            score += max(0, 0.55 - valence) * 1.2
+            score += max(0, 0.8 - energy) * 0.4
+            score += max(0, 0.75 - acousticness) * 0.3
 
         scores[archetype] = score
 
@@ -264,7 +324,14 @@ def normalize_solomon_row(row):
 
 
 def normalize_warda_row(row):
-    genre = row.get("genre") or row.get("artist_genre") or row.get("track_genre") or row.get("primary_genre") or ""
+    artist_genres = clean_genre_text(row.get("artist_genres") or row.get("artist_genre"))
+    genre = clean_genre_text(
+        row.get("genre")
+        or artist_genres
+        or row.get("track_genre")
+        or row.get("primary_genre")
+        or ""
+    )
     subgenre = row.get("subgenre") or row.get("playlist_subgenre") or ""
     playlist_name = row.get("playlist_name") or row.get("context") or row.get("mood") or ""
     track_name = row.get("track_name") or row.get("song_title") or row.get("name") or ""

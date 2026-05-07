@@ -22,12 +22,13 @@ SPACE_FILES = {
     "Dockerfile": "Dockerfile",
     "hf_space_README.md": "README.md",
     "data/browser_songs.js": "data/browser_songs.js",
-    "models/archetype_classifier/tfidf_classifier.pkl": "models/archetype_classifier/tfidf_classifier.pkl",
+    "models/embedding_classifiers/best_model.pkl": "models/embedding_classifiers/best_model.pkl",
 }
 
 DATASET_FILES = {
     "hf_dataset_README.md": "README.md",
     "data/training_dataset.csv": "training_dataset.csv",
+    "data/browser_songs.js": "browser_songs.js",
     "data/DATASET_SCHEMA.md": "DATASET_SCHEMA.md",
     "models/embedding_classifiers/metrics.csv": "metrics.csv",
     "models/embedding_classifiers/evaluation_results.json": "evaluation_results.json",
@@ -93,6 +94,15 @@ def main() -> None:
     )
 
     upload_files(api, space_id, "space", SPACE_FILES)
+    badges_path = ROOT / "assets/badges"
+    if badges_path.exists():
+        api.upload_folder(
+            folder_path=str(badges_path),
+            path_in_repo="assets/badges",
+            repo_id=space_id,
+            repo_type="space",
+        )
+        print(f"uploaded assets/badges -> {space_id}")
     upload_files(api, dataset_id, "dataset", DATASET_FILES)
 
     print()

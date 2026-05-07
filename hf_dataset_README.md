@@ -11,20 +11,20 @@ size_categories:
 
 # Music Listener Archetype Dataset
 
-This dataset supports the project **Who Are You Based On Your Music?**
+This dataset supports the music module of **Identity Mapper**, a recommender-style identity checker.
 
-It contains a processed, balanced training split of 3,250 songs mapped into 15 listener archetypes. The labels are custom weak-supervision labels derived from track metadata, genre/subgenre information, playlist context, and available audio-style values from merged Kaggle music datasets.
+It contains a processed training split of 6,259 songs mapped into 21 listener archetypes. The labels are custom weak-supervision labels derived from track metadata, genre/subgenre information, playlist context, artist genres, and available audio-style values from merged Kaggle music datasets.
 
-The main file is `training_dataset.csv`.
+The main training file is `training_dataset.csv`. The demo catalog is included as `browser_songs.js` and contains 12,058 deduplicated searchable songs for the browser interface.
 
 Important columns:
 
-- `song_title`: song name.
+- `track_name`: song name.
 - `artist`: artist name.
-- `genre`, `subgenre`, `playlist`: normalized context fields.
+- `genre`, `subgenre`, `playlist_name`: normalized context fields.
 - `archetype`: target label for classification.
 - `embedding_text`: text used to build dense latent semantic embeddings for the classifiers.
-- `weak_label`: marks that labels are programmatically generated and should be reviewed before being treated as human gold labels.
+- `weak_confidence`: confidence score from the weak-supervision labeling rules.
 
 Source datasets used during processing:
 

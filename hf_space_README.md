@@ -1,5 +1,5 @@
 ---
-title: Who Are You Based On Your Music
+title: Identity Mapper
 emoji: 🎧
 colorFrom: rose
 colorTo: teal
@@ -9,8 +9,10 @@ pinned: false
 license: mit
 ---
 
-# Who Are You Based On Your Music?
+# Identity Mapper
 
-Interactive demo for embedding-based listener archetype inference.
+Interactive demo for a recommender-style identity checker.
 
-Add songs one by one and the interface updates a listener identity vector, archetype ranking, detected traits, and profile movement. The visual demo uses the project song catalog in the browser and calls a Python classifier API when hosted through this Space.
+The core ML module is music: add songs one by one and the interface updates a listener identity vector, archetype ranking, detected traits, and profile movement. The visual demo uses the project song catalog in the browser and calls a Python embedding-classifier API when hosted through this Space.
+
+The same interface also includes a football team identity matcher from the earlier project, with YouTuber and Stardew Valley character modules planned as future recommender spaces.

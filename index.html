@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Who Are You Based on Your Music?</title>
+    <title>Identity Mapper</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -13,48 +13,14 @@
       <div class="wave wave-three"></div>
       <div class="scanline"></div>
     </div>
-    <div class="note-stream" aria-hidden="true">
-      <span style="--delay: -34s; --top: 18px; --size: 1.45rem;">♪</span>
-      <span style="--delay: -32s; --top: 86px; --size: 0.92rem;">♩</span>
-      <span style="--delay: -30s; --top: 162px; --size: 1.05rem;">♫</span>
-      <span style="--delay: -28s; --top: 42px; --size: 1.16rem;">♫</span>
-      <span style="--delay: -26s; --top: 216px; --size: 0.96rem;">♬</span>
-      <span style="--delay: -24s; --top: 66px; --size: 1.05rem;">♬</span>
-      <span style="--delay: -22s; --top: 292px; --size: 1.2rem;">♪</span>
-      <span style="--delay: -20s; --top: 28px; --size: 1.36rem;">♪</span>
-      <span style="--delay: -18s; --top: 118px; --size: 1rem;">♭</span>
-      <span style="--delay: -16s; --top: 250px; --size: 1.28rem;">♬</span>
-      <span style="--delay: -14s; --top: 52px; --size: 1.28rem;">♬</span>
-      <span style="--delay: -12s; --top: 184px; --size: 0.95rem;">♩</span>
-      <span style="--delay: -10s; --top: 338px; --size: 1.1rem;">♫</span>
-      <span style="--delay: -8s; --top: 76px; --size: 1.18rem;">♪</span>
-      <span style="--delay: -6s; --top: 142px; --size: 1.34rem;">♫</span>
-      <span style="--delay: -4s; --top: 312px; --size: 0.88rem;">♬</span>
-      <span style="--delay: -2s; --top: 96px; --size: 0.88rem;">♬</span>
-      <span style="--delay: 0s; --top: 228px; --size: 1.12rem;">♪</span>
-      <span style="--delay: 2s; --top: 58px; --size: 1.12rem;">♪</span>
-      <span style="--delay: 4s; --top: 276px; --size: 1.02rem;">♯</span>
-      <span style="--delay: 6s; --top: 26px; --size: 1.02rem;">♯</span>
-      <span style="--delay: 8s; --top: 204px; --size: 1.42rem;">♫</span>
-      <span style="--delay: 10s; --top: 84px; --size: 1.42rem;">♫</span>
-      <span style="--delay: 12s; --top: 356px; --size: 0.96rem;">♩</span>
-      <span style="--delay: 14s; --top: 46px; --size: 0.96rem;">♩</span>
-      <span style="--delay: 16s; --top: 132px; --size: 1.22rem;">♪</span>
-      <span style="--delay: 18s; --top: 324px; --size: 1.32rem;">♬</span>
-      <span style="--delay: 20s; --top: 238px; --size: 0.9rem;">♭</span>
-      <span style="--delay: 22s; --top: 106px; --size: 1.04rem;">♪</span>
-      <span style="--delay: 24s; --top: 176px; --size: 1.18rem;">♫</span>
-      <span style="--delay: 26s; --top: 384px; --size: 1rem;">♩</span>
-      <span style="--delay: 28s; --top: 266px; --size: 1.36rem;">♪</span>
-      <span style="--delay: 30s; --top: 146px; --size: 0.94rem;">♬</span>
-    </div>
+    <div id="symbolStream" class="symbol-stream" aria-hidden="true"></div>
     <main class="app-shell">
       <section class="intro">
         <div>
-          <p id="eyebrowText" class="eyebrow">Embedding-based listener archetype inference</p>
-          <h1 id="titleText">Who Are You Based on Your Music?</h1>
+          <p id="eyebrowText" class="eyebrow">Preference-based identity inference</p>
+          <h1 id="titleText">Identity Mapper</h1>
           <p id="summaryText" class="summary">
-            Add songs one by one and watch your latent music identity evolve.
+            A recommender-style identity checker for music, football, creators, and Stardew Valley characters.
           </p>
         </div>
         <div class="intro-actions">
@@ -64,12 +30,43 @@
           </div>
           <div class="model-status">
             <span class="pulse"></span>
-            <span id="statusText">Live listener vector</span>
+            <span id="statusText">Live identity vector</span>
           </div>
         </div>
       </section>
 
-      <section class="workspace">
+      <section class="module-switcher" aria-label="Identity modules">
+        <button class="module-card active" type="button" data-module="music">
+          <span id="moduleMusicLabel">Music</span>
+          <strong id="moduleMusicTitle">Listener archetype</strong>
+          <small id="moduleMusicMeta">Embedding classifier</small>
+        </button>
+        <button class="module-card" type="button" data-module="football">
+          <span id="moduleFootballLabel">Football</span>
+          <strong id="moduleFootballTitle">Team identity</strong>
+          <small id="moduleFootballMeta">Vector matching</small>
+        </button>
+        <button class="module-card locked" type="button" data-module="games">
+          <span id="moduleGamesLabel">Stardew Valley</span>
+          <strong id="moduleGamesTitle">Character match</strong>
+          <small id="moduleGamesMeta">Coming soon</small>
+        </button>
+        <button class="module-card locked" type="button" data-module="creators">
+          <span id="moduleCreatorsLabel">YouTubers</span>
+          <strong id="moduleCreatorsTitle">Creator cluster</strong>
+          <small id="moduleCreatorsMeta">Coming soon</small>
+        </button>
+      </section>
+
+      <section class="identity-passport panel">
+        <div>
+          <p id="savedIdentityLabel" class="label">Saved Identity</p>
+          <h2 id="passportTitle">Start mapping yourself</h2>
+        </div>
+        <div id="passportChips" class="passport-chips"></div>
+      </section>
+
+      <section id="musicModule" class="workspace module-view active">
         <aside class="panel input-panel">
           <div class="panel-heading">
             <h2 id="addSongsTitle">Add Songs</h2>
@@ -189,7 +186,96 @@
             <h3 id="driftLogTitle">Music personality evolution</h3>
             <ul id="driftLog"></ul>
           </div>
+
+          <div class="recommendation-panel">
+            <div class="section-heading">
+              <h3 id="recommendationsTitle">Song recommendations</h3>
+              <span id="recommendationsCount">0</span>
+            </div>
+            <p id="recommendationsNote" class="module-note">
+              Add songs to get similar tracks from the catalog.
+            </p>
+            <div id="songRecommendations" class="recommendation-list"></div>
+          </div>
         </section>
+      </section>
+
+      <section id="footballModule" class="module-view football-layout">
+        <section class="panel football-panel">
+          <div class="panel-heading">
+            <div>
+              <p id="footballEyebrow" class="label">Football identity mapper</p>
+              <h2 id="footballPanelTitle">Find Your Football Team</h2>
+            </div>
+            <button id="footballReset" class="icon-button" title="Reset football profile" aria-label="Reset football profile">
+              ↺
+            </button>
+          </div>
+
+          <div class="football-grid">
+            <div class="football-questions">
+              <div class="section-heading">
+                <h3 id="footballQuestionsTitle">Answer the team-style signals</h3>
+                <span id="footballProgress">0/29</span>
+              </div>
+              <p id="footballModuleNote" class="module-note">
+                This module keeps your original structure: football taste, life style, and player identity. It matches personality vectors to team identities, so it asks questions instead of collecting songs.
+              </p>
+              <label class="football-model-select">
+                <span id="footballModelLabel">Team pool</span>
+                <select id="footballCategorySelect"></select>
+              </label>
+              <div id="footballQuestions" class="quiz-stack football-stack"></div>
+            </div>
+
+            <div class="football-result">
+              <div id="footballBadgeFrame" class="football-badge-frame" hidden>
+                <img id="footballBadge" alt="" />
+              </div>
+              <p id="footballResultLabel" class="label">Your team is</p>
+              <h2 id="footballTeam">Answer a few signals</h2>
+              <p id="footballDescription" class="description">
+                Your football profile will be matched against club and national-team identity vectors.
+              </p>
+
+              <div class="top-match-section">
+                <p id="footballMatchesLabel" class="label">Top matches</p>
+                <div id="footballMatches" class="top-matches"></div>
+              </div>
+
+              <div class="football-profile-field" aria-hidden="true">
+                <span id="footballFieldLeft" class="field-label field-left">Flair</span>
+                <span id="footballFieldRight" class="field-label field-right">Control</span>
+                <span id="footballFieldTop" class="field-label field-top">Structure</span>
+                <span id="footballFieldBottom" class="field-label field-bottom">Emotion</span>
+                <div id="footballProfilePoint" class="football-profile-point"></div>
+              </div>
+
+              <div class="vector-bars football-bars">
+                <div class="bar-row"><span id="footballCreativityLabel">Creativity</span><meter id="footballCreativity" min="0" max="1" value="0"></meter></div>
+                <div class="bar-row"><span id="footballStructureLabel">Structure</span><meter id="footballStructure" min="0" max="1" value="0"></meter></div>
+                <div class="bar-row"><span id="footballEmotionLabel">Emotion</span><meter id="footballEmotion" min="0" max="1" value="0"></meter></div>
+                <div class="bar-row"><span id="footballPhysicalityLabel">Physicality</span><meter id="footballPhysicality" min="0" max="1" value="0"></meter></div>
+                <div class="bar-row"><span id="footballLoyaltyLabel">Loyalty</span><meter id="footballLoyalty" min="0" max="1" value="0"></meter></div>
+                <div class="bar-row"><span id="footballWinningLabel">Winning</span><meter id="footballWinning" min="0" max="1" value="0"></meter></div>
+                <div class="bar-row"><span id="footballFlairLabel">Flair</span><meter id="footballFlair" min="0" max="1" value="0"></meter></div>
+                <div class="bar-row"><span id="footballDisciplineLabel">Discipline</span><meter id="footballDiscipline" min="0" max="1" value="0"></meter></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="gamesModule" class="module-view placeholder-module panel">
+        <p class="label">Coming soon</p>
+        <h2>Stardew Valley Character Match</h2>
+        <p class="description">This module will map choices like routine, friendship, ambition, calm, nature, and play style into a Stardew Valley character identity.</p>
+      </section>
+
+      <section id="creatorsModule" class="module-view placeholder-module panel">
+        <p class="label">Coming soon</p>
+        <h2>YouTube Creator Cluster</h2>
+        <p class="description">This module will infer creator taste from channels, topics, humor style, pacing, and parasocial comfort.</p>
       </section>
     </main>
 

@@ -19,6 +19,12 @@ ARCHETYPE_VECTORS = {
     "heavy catharsis seeker": [0.88, 0.60, 0.30, 0.18, 0.48, 0.20, 0.56, 0.90],
     "classic soul romantic": [0.42, 0.38, 0.58, 0.18, 0.54, 0.92, 0.34, 0.12],
     "gaming adrenaline pilot": [0.90, 0.24, 0.46, 0.78, 0.24, 0.30, 0.66, 0.62],
+    "mainstream pop shapeshifter": [0.78, 0.30, 0.48, 0.60, 0.34, 0.62, 0.54, 0.30],
+    "dancefloor serotonin seeker": [0.92, 0.22, 0.46, 0.78, 0.22, 0.68, 0.58, 0.24],
+    "techno bunker futurist": [0.90, 0.34, 0.34, 0.96, 0.30, 0.24, 0.70, 0.56],
+    "dark academia romantic": [0.32, 0.70, 0.76, 0.18, 0.88, 0.64, 0.82, 0.12],
+    "country sunset storyteller": [0.46, 0.48, 0.66, 0.08, 0.66, 0.76, 0.42, 0.20],
+    "sad pop confessional": [0.46, 0.82, 0.64, 0.38, 0.86, 0.54, 0.58, 0.18],
 }
 
 
