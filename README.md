@@ -1,166 +1,106 @@
 # Identity Mapper
 
-A recommender-style identity checker that maps taste across music, football, creators, and game-character spaces.
+Identity Mapper is a recommender-style identity checker. Instead of only recommending content, it recommends an identity match based on the things a user likes.
 
-This repository merges the music listener-archetype project and the earlier football team-finder into one system. The broader product idea is an **identity recommender**: instead of recommending only songs, teams, creators, or characters, the system recommends an identity label that fits the user's preferences.
+The app currently combines two modules:
 
-The main assignment module is music. The user adds songs one at a time, each song contributes a latent aesthetic vector, and the app updates the listener profile dynamically. The football module brings in the earlier team-finder project as a second identity space, using questionnaire vectors, team pools, and club badges. YouTuber and Stardew Valley character modules are planned next.
+- **Music**: add songs and get a listener archetype based on your taste.
+- **Football**: answer questions and get a football team identity match.
 
-## Assignment Fit
+Future modules are planned for:
 
-This project satisfies the core assignment shape:
+- **YouTubers**: creator taste and content-style identity.
+- **Stardew Valley**: character matching based on personality and play style.
 
-- Domain problem: build a recommender-style identity checker for music taste.
-- Embedding challenge: genre labels alone are too shallow, so songs are represented through latent text/aesthetic embeddings.
-- Dataset: merged and processed Kaggle music datasets plus a custom weak-supervision archetype layer.
-- Classifier: trained listener-archetype classifiers specific to this project.
-- Demo: custom HTML prototype plus Python embedding-model API packaged for a Hugging Face Docker Space.
+## What The App Does
 
-For grading, the music module is the concrete embedding/classifier system. The larger website shows how the same identity-recommendation idea can expand to other preference domains.
+Identity Mapper turns preferences into a profile vector. Each module uses a different kind of input:
 
-## Current Prototype
+- Songs create a music taste profile.
+- Football answers create a team-style profile.
+- Future modules will use similar preference signals for creators and characters.
 
-- Add individual songs from a 12,058-song browser catalog.
-- Switch between identity modules from one HTML interface.
-- Save music and football results into a local identity passport.
-- Aggregate song vectors into a listener identity vector.
-- Answer optional taste-calibration questions adapted from the earlier personality-vector project.
-- Predict primary and secondary listener archetypes.
-- Show top archetype matches with similarity scores.
-- Show detected traits and feature strengths.
-- Animate the user's position in a simple identity space.
-- Display how each added song shifts the profile.
-- Filter football results by team pool: all teams, LaLiga, Premier League, Bundesliga, national teams, or Inazuma Eleven.
-- Show football team badges for the matched result.
+The result is saved into a small identity map, so the user can build a combined profile across different parts of their taste.
 
-## System Framing
+## Current Features
 
-Identity Mapper works like a recommender system, but the recommendation target is an identity cluster:
+- Interactive custom HTML interface.
+- Music listener archetype checker.
+- Searchable song catalog.
+- Song recommendations based on similarity.
+- Football team matcher.
+- Football team pools, including LaLiga, Premier League, Bundesliga, national teams, and Inazuma Eleven.
+- Team badges for football results.
+- English and Spanish interface toggle.
+- Saved identity summary across modules.
+- Animated visual backgrounds for each section.
 
-```text
-user preferences
--> domain-specific vectors or embeddings
--> similarity / classifier model
--> recommended identity match
+## Screenshots
+
+Screenshots will be added here.
+
+<!--
+Example:
+
+![Home screen](docs/screenshots/home.png)
+![Music module](docs/screenshots/music.png)
+![Football module](docs/screenshots/football.png)
+-->
+
+## How To Use
+
+Usage instructions will be added here.
+
+<!--
+Suggested structure:
+
+1. Open the app.
+2. Choose a module.
+3. Add songs or answer questions.
+4. View your identity result.
+5. Switch modules to build your full identity map.
+-->
+
+## Run Locally
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
 ```
 
-Different modules can use different data sources and models while still sharing the same interface:
+Start the app:
 
-- Music: song embeddings plus trained archetype classifiers.
-- Football: questionnaire vector matching against team identity vectors.
-- YouTubers: planned creator-taste recommender using channels/topics/style signals.
-- Stardew Valley: planned character matcher using personality and play-style questions.
-
-## Dataset Status
-
-- `data/song_inputs.csv`: tiny hand-labeled starter file.
-- `data/song_inputs_seeded.csv`: larger weakly labeled draft dataset with 384 candidate songs across 8 archetypes.
-- `data/model_dataset_seeded.csv`: model-ready version of the seeded dataset, including `embedding_text`.
-- `data/merged_music_dataset.csv`: merged Kaggle-derived base dataset with 22,191 rows.
-- `data/training_dataset.csv`: expanded training subset with 6,259 rows across 21 archetypes.
-- `data/browser_songs.js`: browser-searchable demo catalog with 12,058 deduplicated songs.
-- `models/archetype_classifier/`: TF-IDF logistic regression baseline classifier.
-- `models/embedding_classifiers/`: embedding classifier comparison, evaluation results, and the model used by the hosted demo API.
-
-The generated training dataset uses weak-supervision labels and confidence scores. It gives us enough volume to build and evaluate classifiers, but the labels should be reviewed before treating model scores as human gold labels.
-
-## Conceptual Pipeline
-
-```text
-song input
--> song embedding
-optional taste calibration
--> weighted listener vector
--> classifier / archetype similarity scores
--> recommended listener identity
+```bash
+python app.py
 ```
 
-## Football Module
-
-The earlier football-team project is now incorporated into the shared Identity Mapper interface. It uses this structure:
+Then open:
 
 ```text
-answers -> 8-dimensional profile vector -> cosine similarity -> best identity match
+http://127.0.0.1:7860
 ```
 
-The music module uses a related identity-vector idea, but with songs as the primary input:
+For a quick visual preview without the Python API, you can also open `index.html` directly in a browser.
+
+## Project Structure
 
 ```text
-songs + taste calibration -> listener vector -> archetype similarity -> music identity
+index.html              Main app interface
+styles.css              Visual design and animations
+app.js                  Frontend logic
+app.py                  App entry point
+api_server.py           Local prediction API
+data/                   Song catalog and processed data
+models/                 Trained music models
+assets/badges/          Football team badges
+scripts/                Data processing and publishing scripts
 ```
-
-For the assignment, the music module is the core ML deliverable because it uses a custom dataset, embedding-based representations, trained classifiers, and evaluation. The football module is a merged interactive extension that shows the same recommender-style identity idea in another domain.
 
 ## Roadmap
 
-- Replace curated song vectors with Spotify metadata and audio features.
-- Add lyric embeddings from a transformer model.
-- Let users paste Spotify song links.
-- Add playlist import after the songs-only version is solid.
-- Train a classifier from labeled listener/archetype examples.
-- Add a YouTuber identity recommender.
-- Add a Stardew Valley character identity checker.
-- Store a cross-domain identity profile across modules.
-
-## Train Baseline Model
-
-```bash
-python3 scripts/prepare_training_dataset.py
-.venv/bin/python scripts/train_archetype_classifier.py --backend tfidf
-```
-
-The current baseline uses TF-IDF text features over `embedding_text` plus logistic regression. It is trained on the expanded 21-archetype weak-label space and acts as a comparison model.
-
-## Train Embedding Classifiers
-
-```bash
-.venv/bin/python scripts/train_embedding_classifiers.py
-```
-
-This trains several classifiers on dense latent semantic embeddings produced from `embedding_text` using TF-IDF followed by TruncatedSVD. Results are written to `models/embedding_classifiers/`.
-
-## Predict
-
-```bash
-.venv/bin/python scripts/predict_archetype.py "After Dark | Mr.Kitty | electronic | synthwave | night drive alone"
-```
-
-## Run Custom HTML + Model API
-
-```bash
-.venv/bin/python app.py
-```
-
-This serves the custom HTML interface and the trained embedding-model API from the same app. The browser calls `/predict` when served through Python, so the visual prototype can use the real classifier while still working as a standalone HTML file.
-
-## Publish To Hugging Face
-
-Create a `.env` file with:
-
-```bash
-HF_TOKEN=your_huggingface_token
-HF_USERNAME=your_huggingface_username
-```
-
-Then run:
-
-```bash
-.venv/bin/python scripts/publish_huggingface.py
-```
-
-The script creates:
-
-- a Docker Space for the working demo.
-- a Dataset repository with `training_dataset.csv`, schema notes, and evaluation metrics.
-
-Private API keys and raw Kaggle files are intentionally excluded from the published repos.
-
-## Optional Gradio Demo
-
-```bash
-.venv/bin/python gradio_app.py
-```
-
-## Run
-
-For a quick local visual preview, open `index.html` in a browser. For the full model-backed version, run `app.py`.
+- Add the YouTuber identity module.
+- Add the Stardew Valley character module.
+- Improve the music recommender results.
+- Add more visual identity summaries.
+- Make the saved identity profile more complete.
