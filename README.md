@@ -37,15 +37,37 @@ The result is saved into a small identity map, so the user can build a combined 
 
 ## Screenshots
 
-Screenshots will be added here.
+### Music Identity
 
-<!--
-Example:
+The music module starts with a large listener-identity view and animated music background.
 
-![Home screen](docs/screenshots/home.png)
-![Music module](docs/screenshots/music.png)
-![Football module](docs/screenshots/football.png)
--->
+![Music hero screen](docs/screenshots/music-hero.png)
+
+Users can switch between the available identity modules from the shared module selector.
+
+![Module selector](docs/screenshots/module-switcher.png)
+
+Songs can be typed manually or selected from the quick-add list.
+
+![Add songs panel](docs/screenshots/music-add-songs.png)
+
+The result panel shows the current archetype, confidence, top matches, and trait signals.
+
+![Music result panel](docs/screenshots/music-result-empty.png)
+
+The identity space visualizes the listener profile and includes song recommendations.
+
+![Music identity space](docs/screenshots/music-identity-space.png)
+
+The taste calibration questions add extra preference signals to the music profile.
+
+![Taste calibration](docs/screenshots/music-taste-calibration.png)
+
+### Football Identity
+
+The football module uses questions and team pools to match the user with a football identity.
+
+![Football questions](docs/screenshots/football-questions.png)
 
 ## How To Use
 
