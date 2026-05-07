@@ -109,19 +109,18 @@ Then open:
 http://127.0.0.1:7860
 ```
 
-For a quick visual preview without the Python API, you can also open `index.html` directly in a browser.
+For a quick visual preview without the Python API, you can also open `frontend/index.html` directly in a browser.
 
 ## Project Structure
 
 ```text
-index.html              Main app interface
-styles.css              Visual design and animations
-app.js                  Frontend logic
+frontend/               Main HTML, CSS, and JavaScript app
 app.py                  App entry point
 api_server.py           Local prediction API
 data/                   Song catalog and processed data
 models/                 Trained music models
 assets/badges/          Football team badges
+docs/                   Screenshots and Hugging Face README files
 scripts/                Data processing and publishing scripts
 ```
 

@@ -15,18 +15,18 @@ DEFAULT_DATASET = "music-listener-archetypes-dataset"
 SPACE_FILES = {
     "app.py": "app.py",
     "api_server.py": "api_server.py",
-    "index.html": "index.html",
-    "styles.css": "styles.css",
-    "app.js": "app.js",
+    "frontend/index.html": "frontend/index.html",
+    "frontend/styles.css": "frontend/styles.css",
+    "frontend/app.js": "frontend/app.js",
     "requirements.txt": "requirements.txt",
     "Dockerfile": "Dockerfile",
-    "hf_space_README.md": "README.md",
+    "docs/huggingface/hf_space_README.md": "README.md",
     "data/browser_songs.js": "data/browser_songs.js",
     "models/embedding_classifiers/best_model.pkl": "models/embedding_classifiers/best_model.pkl",
 }
 
 DATASET_FILES = {
-    "hf_dataset_README.md": "README.md",
+    "docs/huggingface/hf_dataset_README.md": "README.md",
     "data/training_dataset.csv": "training_dataset.csv",
     "data/browser_songs.js": "browser_songs.js",
     "data/DATASET_SCHEMA.md": "DATASET_SCHEMA.md",

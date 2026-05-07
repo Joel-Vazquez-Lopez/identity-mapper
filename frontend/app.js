@@ -2644,7 +2644,7 @@ function badgeSlug(name) {
 }
 
 function badgePath(name) {
-  const prefix = window.location.protocol === "file:" ? "assets/badges/" : "/static/assets/badges/";
+  const prefix = window.location.protocol === "file:" ? "../assets/badges/" : "/static/assets/badges/";
   return `${prefix}${badgeSlug(name)}.png`;
 }
 

@@ -10,6 +10,7 @@ from pydantic import BaseModel
 
 
 BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIR = BASE_DIR / "frontend"
 MODEL_PATH = BASE_DIR / "models/embedding_classifiers/best_model.pkl"
 
 
@@ -54,17 +55,17 @@ def health():
 
 @app.get("/")
 def index():
-    return FileResponse(BASE_DIR / "index.html")
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 @app.get("/styles.css")
 def styles():
-    return FileResponse(BASE_DIR / "styles.css", media_type="text/css")
+    return FileResponse(FRONTEND_DIR / "styles.css", media_type="text/css")
 
 
 @app.get("/app.js")
 def frontend_script():
-    return FileResponse(BASE_DIR / "app.js", media_type="application/javascript")
+    return FileResponse(FRONTEND_DIR / "app.js", media_type="application/javascript")
 
 
 @app.get("/data/browser_songs.js")

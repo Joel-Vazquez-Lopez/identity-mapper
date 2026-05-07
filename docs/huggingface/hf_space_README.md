@@ -1,8 +1,8 @@
 ---
 title: Identity Mapper
 emoji: 🎧
-colorFrom: rose
-colorTo: teal
+colorFrom: pink
+colorTo: green
 sdk: docker
 app_port: 7860
 pinned: false
